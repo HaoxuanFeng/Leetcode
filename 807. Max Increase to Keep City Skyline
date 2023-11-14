@@ -1,0 +1,11 @@
+class Solution:
+    def maxIncreaseKeepingSkyline(self, grid: List[List[int]]) -> int:
+        n = len(grid)
+        maxrow = [max(row) for row in grid]
+        maxcol = [max(grid[i][j] for i in range(n)) for j in range(n)]
+        ans = 0
+        for i in range(n):
+            for j in range(n):
+                ans += min(maxrow[i], maxcol[j]) - grid[i][j]
+
+        return ans
